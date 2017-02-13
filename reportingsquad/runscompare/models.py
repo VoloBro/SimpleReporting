@@ -24,4 +24,4 @@ class TestRun(models.Model):
     messages = models.CharField(default='n/a', max_length=500)
 
     def __str__(self):
-        return self.run_id, self.test_id, self.status
+        return self.run_id#, self.test_id, self.status

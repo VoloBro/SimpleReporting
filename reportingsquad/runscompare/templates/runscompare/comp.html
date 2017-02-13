@@ -3,8 +3,14 @@
 
 
 <div class="container">
-    <!--<h2>Striped Rows</h2>-->
-    <!--<p>The .table-striped class adds zebra-stripes to a table:</p>-->
+    {% for item in list %}
+        <h2>{{item}}</h2>
+    {% endfor %}
+
+    {% for k, v in rows.items %}
+        <h2>{{k}}-{{v}}</h2>
+    {% endfor %}
+
     <table class="table table-striped table-condensed">
         <thead>
         <col>
@@ -12,7 +18,7 @@
         <colgroup span="2"></colgroup>
         <colgroup span="2"></colgroup>
         <tr>
-            <th colspan="2" scope="colgroup">TestCase</th>
+            <th colspan="2" scope="colgroup"></th>
             <th colspan="2" scope="colgroup">Newer run</th>
             <th colspan="2" scope="colgroup">Older run</th>
         </tr>
@@ -27,8 +33,7 @@
         </thead>
         <tbody>
 
-        {% for run in object_list %}
-            <!--<h5>{{run.run_id}} {{run.test_id}} {{run.status}} </h5>-->
+        {% for run in newrun %}
             <tr>
                 <td>{{run.test_id.id}}</td>
                 <td>{{run.test_id.name}}</td>
@@ -38,10 +43,7 @@
                 <td>0</td>
             </tr>
         {% endfor %}
-
-
         </tbody>
     </table>
 </div>
-
 {% endblock %}
