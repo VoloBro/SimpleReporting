@@ -27,17 +27,14 @@ def compareruns(request):
 
     status_not_executed = TestCaseStatus()
     status_not_executed.name = 'n/a'
-    run_not_executed = TestRun()
-    run_not_executed.status = status_not_executed
 
-    for testcase in query_newrun:
-        old_run = TestRun.objects.filter(run_id='1', test_id=testcase.test_id)
-        if old_run:
-            for item in old_run:
-                #rows[testcase.test_id.id] = "2"
-                rows[testcase.test_id.id] = item.status
-        else:
-            rows[testcase.test_id.id] = run_not_executed
+    for new_run in query_newrun:
+        old_run = TestRun.objects.filter(run_id='1', test_id=new_run.test_id)
+        if old_run: #if test_id found in old run
+            for old_run_item in old_run:
+                rows[new_run.test_id.id] = [new_run.test_id.name, new_run.status, 0,  old_run_item.status, 0]
+        else: #if test_id not found in old run - set status to not executed
+            rows[new_run.test_id.id] = [new_run.test_id.name, new_run.status, 0, status_not_executed, 0]
         pass
 
     context_dict = {'newrun': query_newrun, 'rows': rows, 'dict': dict, 'list': list}
