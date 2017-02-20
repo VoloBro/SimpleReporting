@@ -24,4 +24,13 @@ class TestRun(models.Model):
     messages = models.CharField(default='n/a', max_length=500)
 
     def __str__(self):
-        return self.run_id#, self.test_id, self.status
+        return "%s %s" % (self.run_id, self.test_id.name)
+
+class TestExecution(models.Model):
+    run_id = models.CharField(max_length=100, default='0', primary_key=True)
+    suite_name = models.CharField(max_length=100, default='Test suite name')
+    duration = models.PositiveIntegerField()
+    comments = models.CharField(max_length=255, default='no run comments')
+
+    def __str__(self):
+        return "[%s] %s - %s" % (self.run_id, self.suite_name, self.comments)

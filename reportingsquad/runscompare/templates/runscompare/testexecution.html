@@ -1,0 +1,43 @@
+{% extends "runscompare/header.html" %}
+{% block content %}
+
+<div class="Container">
+    <h2>Last 25 runs</h2>
+    <table class="table table-striped table-condensed">
+        <thead>
+        <colgroup span="1"></colgroup>
+        <colgroup span="1"></colgroup>
+        <colgroup span="1"></colgroup>
+        <colgroup span="1"></colgroup>
+        <colgroup span="1"></colgroup>
+        <colgroup span="1"></colgroup>
+        <colgroup span="1"></colgroup>
+
+        <tr>
+            <th colspan="1" scope="colgroup">Run id</th>
+            <th colspan="1" scope="colgroup">Suite name</th>
+            <th colspan="1" scope="colgroup">Duration</th>
+            <th colspan="1" scope="colgroup">Verdict</th>
+            <th colspan="1" scope="colgroup">Failed tests</th>
+            <th colspan="1" scope="colgroup">Total tests</th>
+            <th colspan="1" scope="colgroup">Comments</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        {% for run in runs %}
+        <tr>
+            <td>{{run.run_id}}</td>
+            <td>{{run.suite_name}}</td>
+            <td>{{run.duration}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{run.comments}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}

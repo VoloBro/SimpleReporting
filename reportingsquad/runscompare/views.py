@@ -1,23 +1,17 @@
 from django.views.generic.list import ListView
 from django.shortcuts import render, render_to_response
-from .models import TestRun, TestCaseStatus
+from .models import *
 from django.template import RequestContext
-
 
 def index(request):
     return render(request, 'runscompare/comp.html')
-
 
 def compareruns(request):
     # Obtain the context from the HTTP request.
     context = RequestContext(request)
 
-    # Query the database for a list of ALL categories currently stored.
-    # Order the categories by no. likes in descending order.
-    # Retrieve the top 5 only - or all if less than 5.
-    # Place the list in our context_dict dictionary which will be passed to the template engine.
     query_newrun = TestRun.objects.filter(run_id='2')
-    query_oldrun = TestRun.objects.filter(run_id='1')
+    query_oldrun = TestRun.objects.filter(run_id='3')
 
     rows = {}
 
@@ -46,3 +40,15 @@ def compareruns(request):
 
     # Render the response and send it back!
     return render(request, 'runscompare/comp.html', context_dict, context)
+
+def testexecution(request):
+    context = RequestContext(request)
+
+    query_runs = TestExecution.objects.all()[:25]
+
+    context_dict = {'runs': query_runs}
+
+    return render(request, 'runscompare/testexecution.html', context_dict)
+
+def filertable(request):
+    return render(request, 'runscompare/filtertable.html')
