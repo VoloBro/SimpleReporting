@@ -5,17 +5,28 @@
     <title>Runs compare</title>
     <meta charset="utf-8"/>
     {% load staticfiles %}
+    <link href="{% static 'runscompare/css/filtertable.css' %}" rel="stylesheet">
+    <script type="text/javascript" src="{% static 'runscompare/js/filtertable.js' %}"></script>
     <!--<link rel="stylesheet" href="{% static 'runscompare/css/bootstrap.min.css' %}" type="text/css"/>-->
     <link href="{% static 'runscompare/css/bootstrap.min.css' %}" rel="stylesheet">
     <script type="text/javascript" src="{% static 'runscompare/jquery/jquery-1.11.0.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'runscompare/js/bootstrap.min.js' %}"></script>
+
 </head>
 
 <body class="body" style="background-color:#f6f6f6">
 
-<a href="/">Home</a>
-<a href="/comp/">Compare</a>
-<a href="/filter/">Filtered table</a>
+<div class="bs-example" data-example-id="simple-nav-stacked">
+    <ul class="nav nav-pills nav-pills-stacked-example">
+        <li role="presentation" class="active"><a href="/">Home</a></li>
+        <li role="presentation"><a href="/comp/">Compare</a></li>
+        <li role="presentation"><a href="/filter/">Filtered table</a></li>
+    </ul>
+</div>
+
+<!--<a href="/">Home</a>-->
+<!--<a href="/comp/">Compare</a>-->
+<!--<a href="/filter/">Filtered table</a>-->
 
 
 <div>

@@ -32,5 +32,6 @@ class TestExecution(models.Model):
     duration = models.PositiveIntegerField()
     comments = models.CharField(max_length=255, default='no run comments')
 
+
     def __str__(self):
         return "[%s] %s - %s" % (self.run_id, self.suite_name, self.comments)
